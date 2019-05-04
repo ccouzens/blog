@@ -34,7 +34,11 @@ sudo dnf config-manager --set-enabled google-chrome
 sudo dnf install google-chrome
 
 # Install https://www.dropbox.com/install
-# Install https://exercism.io/cli to ~/.local/bin/exercism
+
+# Install exercism
+curl -L https://github.com/exercism/cli/releases/download/v3.0.11/exercism-linux-64bit.tgz | tar -C ~/.local/bin/ -xzvf - ./exercism
+# https://exercism.io/my/settings
+# exercism configure --token=YOUR_API_TOKEN
 
 # Sign into Firefox
 # Sign into Chrome
