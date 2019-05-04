@@ -1,9 +1,18 @@
 sudo dnf upgrade
 
-sudo dnf install akmod-wl kmod-wl broadcom-wl
+# Enable RPM fusion https://rpmfusion.org/Configuration
+sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf install rpmfusion-nonfree-release-tainted
+# https://rpmfusion.org/keys
 
-sudo dnf install buildah firefox-wayland gnome-tweaks nodejs-yarn npm podman nautilus-dropbox
+# Enable wifi
+sudo dnf install b43-firmware broadcom-wl
+# Sign into Wifi
 
+sudo dnf install buildah firefox-wayland gnome-tweaks nodejs-yarn npm podman nautilus-dropbox vim fedora-workstation-repositories
+
+sudo dnf groupupdate core
+sudo dnf groupupdate multimedia
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 flatpak install flathub com.valvesoftware.Steam io.atom.Atom org.gimp.GIMP org.gnome.PasswordSafe org.gnome.gitg com.visualstudio.code
@@ -14,8 +23,16 @@ echo 'flatpak run org.gnome.gitg "$@"' > ~/.local/bin/gitg
 echo 'flatpak run com.visualstudio.code "$@"' > ~/.local/bin/code
 chmod +x ~/.local/bin/{atom,gimp,gitg,code}
 
+# rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-# Install https://www.google.com/chrome/
+rustup component add rustfmt clippy rls rust-analysis rust-src
+code --install-extension rust-lang.rust
+# Set rustup path in visual studio code to /home/chris/.cargo/bin/rustup
+
+# chrome
+sudo dnf config-manager --set-enabled google-chrome
+sudo dnf install google-chrome
+
 # Install https://www.dropbox.com/install
 # Install https://exercism.io/cli to ~/.local/bin/exercism
 
@@ -24,4 +41,8 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # Sign into Dropbox
 # Sign into Github
 # Sign into Steam
-# Sign into Wifi
+
+git config --global user.name "Chris Couzens"
+git config --global user.email "ccouzens@gmail.com"
+git config --global core.editor vim
+cp /usr/share/vim/vim81/vimrc_example.vim ~/.vimrc
