@@ -40,6 +40,12 @@ curl -L https://github.com/exercism/cli/releases/download/v3.0.11/exercism-linux
 # https://exercism.io/my/settings
 # exercism configure --token=YOUR_API_TOKEN
 
+# Install Intellij IDEA
+mkdir -p ~/.local/opt/idea
+curl https://download-cf.jetbrains.com/idea/ideaIC-2019.1.3.tar.gz | tar -C ~/.local/opt/idea -xzvf -
+echo '~/.local/opt/idea/idea-IC-191.7479.19/bin/idea.sh "$@"' > ~/.local/bin/idea
+chmod +x ~/.local/bin/idea
+
 # Sign into Firefox
 # Sign into Chrome
 # Sign into Dropbox
