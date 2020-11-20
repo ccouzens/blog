@@ -9,7 +9,7 @@ sudo dnf install rpmfusion-nonfree-release-tainted
 sudo dnf install b43-firmware broadcom-wl
 # Sign into Wifi
 
-sudo dnf install buildah firefox-wayland gnome-tweaks nodejs-yarn npm podman nautilus-dropbox vim fedora-workstation-repositories
+sudo dnf install buildah firefox-wayland gnome-tweaks nodejs-yarn npm podman vim fedora-workstation-repositories
 
 sudo dnf groupupdate core
 sudo dnf groupupdate multimedia
@@ -33,8 +33,6 @@ code --install-extension rust-lang.rust
 sudo dnf config-manager --set-enabled google-chrome
 sudo dnf install google-chrome
 
-# Install https://www.dropbox.com/install
-
 # Install exercism
 curl -L https://github.com/exercism/cli/releases/download/v3.0.11/exercism-linux-64bit.tgz | tar -C ~/.local/bin/ -xzvf - ./exercism
 # https://exercism.io/my/settings
@@ -48,7 +46,6 @@ chmod +x ~/.local/bin/idea
 
 # Sign into Firefox
 # Sign into Chrome
-# Sign into Dropbox
 # Sign into Github
 # Sign into Steam
 
