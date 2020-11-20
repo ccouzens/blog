@@ -9,7 +9,7 @@ sudo dnf install rpmfusion-nonfree-release-tainted
 sudo dnf install b43-firmware broadcom-wl
 # Sign into Wifi
 
-sudo dnf install buildah firefox-wayland gnome-tweaks nodejs-yarn npm podman vim fedora-workstation-repositories
+sudo dnf install buildah firefox-wayland gnome-tweaks nodejs-yarn npm podman vim fedora-workstation-repositories flatpak-spawn
 
 sudo dnf groupupdate core
 sudo dnf groupupdate multimedia
