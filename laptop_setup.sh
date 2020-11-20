@@ -15,13 +15,12 @@ sudo dnf groupupdate core
 sudo dnf groupupdate multimedia
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
-flatpak install flathub com.valvesoftware.Steam io.atom.Atom org.gimp.GIMP org.gnome.PasswordSafe org.gnome.gitg com.visualstudio.code
+flatpak install flathub com.valvesoftware.Steam org.gimp.GIMP org.gnome.PasswordSafe org.gnome.gitg com.visualstudio.code
 
-echo 'flatpak run io.atom.Atom "$@"' > ~/.local/bin/atom
 echo 'flatpak run org.gimp.GIMP "$@"' > ~/.local/bin/gimp
 echo 'flatpak run org.gnome.gitg "$@"' > ~/.local/bin/gitg
 echo 'flatpak run com.visualstudio.code "$@"' > ~/.local/bin/code
-chmod +x ~/.local/bin/{atom,gimp,gitg,code}
+chmod +x ~/.local/bin/{gimp,gitg,code}
 
 # rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
