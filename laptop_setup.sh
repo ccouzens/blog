@@ -53,3 +53,7 @@ git config --global user.name "Chris Couzens"
 git config --global user.email "ccouzens@gmail.com"
 git config --global core.editor vim
 cp /usr/share/vim/vim81/vimrc_example.vim ~/.vimrc
+
+# make a dev container
+mkdir -p ~/Documents/git/github.com
+podman container create --name dev-box --rm -it -v ~/Documents/git/github.com:/projects:Z -w projects -p 127.0.0.1:3000:3000 docker.io/fedora:33
