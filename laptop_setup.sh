@@ -56,4 +56,5 @@ cp /usr/share/vim/vim81/vimrc_example.vim ~/.vimrc
 
 # make a dev container
 mkdir -p ~/Documents/git/github.com
-podman container create --name dev-box --rm -it -v ~/Documents/git/github.com:/projects:Z -w projects -p 127.0.0.1:3000:3000 docker.io/fedora:33
+image_id="$(podman image build -f dev-box.dockerfile . | tee >(cat 1>&2) | tail -n1 | awk '{print $NF}')"
+podman container run --rm -it -v ~/Documents/git/github.com:/projects:Z -w /projects -p 127.0.0.1:3000:3000 "$image_id"
