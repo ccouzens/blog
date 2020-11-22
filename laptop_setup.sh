@@ -9,7 +9,7 @@ sudo dnf install rpmfusion-nonfree-release-tainted
 sudo dnf install b43-firmware broadcom-wl
 # Sign into Wifi
 
-sudo dnf install buildah firefox-wayland gnome-tweaks nodejs-yarn npm podman vim fedora-workstation-repositories flatpak-spawn
+sudo dnf install buildah firefox-wayland gnome-tweaks podman vim fedora-workstation-repositories flatpak-spawn
 
 sudo dnf groupupdate core
 sudo dnf groupupdate multimedia
@@ -23,26 +23,9 @@ echo 'flatpak run org.gnome.gitg "$@"' > ~/.local/bin/gitg
 echo 'flatpak run com.visualstudio.code "$@"' > ~/.local/bin/code
 chmod +x ~/.local/bin/{gimp,gitg,code}
 
-# rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-rustup component add rustfmt clippy rls rust-analysis rust-src
-code --install-extension rust-lang.rust
-# Set rustup path in visual studio code to /home/chris/.cargo/bin/rustup
-
 # chrome
 sudo dnf config-manager --set-enabled google-chrome
 sudo dnf install google-chrome
-
-# Install exercism
-curl -L https://github.com/exercism/cli/releases/download/v3.0.11/exercism-linux-64bit.tgz | tar -C ~/.local/bin/ -xzvf - ./exercism
-# https://exercism.io/my/settings
-# exercism configure --token=YOUR_API_TOKEN
-
-# Install Intellij IDEA
-mkdir -p ~/.local/opt/idea
-curl https://download-cf.jetbrains.com/idea/ideaIC-2019.1.3.tar.gz | tar -C ~/.local/opt/idea -xzvf -
-echo '~/.local/opt/idea/idea-IC-191.7479.19/bin/idea.sh "$@"' > ~/.local/bin/idea
-chmod +x ~/.local/bin/idea
 
 # Sign into Firefox
 # Sign into Chrome
@@ -54,7 +37,20 @@ git config --global user.email "ccouzens@gmail.com"
 git config --global core.editor vim
 cp /usr/share/vim/vim81/vimrc_example.vim ~/.vimrc
 
+ssh-keygen
+
 # make a dev container
-mkdir -p ~/Documents/git/github.com
+mkdir -p ~/Projects
 image_id="$(podman image build -f dev-box.dockerfile . | tee >(cat 1>&2) | tail -n1 | awk '{print $NF}')"
-podman container run --rm -it -v ~/Documents/git/github.com:/projects:Z -w /projects -p 127.0.0.1:3000:3000 "$image_id"
+podman container create --name dev-container -v ~/Projects:/root/projects:Z -v ~/.ssh/id_rsa.pub:/root/.ssh/authorized_keys:Z -p 127.0.0.1:3022:3022 "$image_id"
+
+cat > ~/.ssh/config << CONFIG
+Host dev-container
+  HostName localhost
+  User root
+  Port 3022
+CONFIG
+chmod 600 ~/.ssh/config
+
+# start the dev-container
+podman container start dev-container
