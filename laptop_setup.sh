@@ -54,3 +54,9 @@ chmod 600 ~/.ssh/config
 
 echo 'podman container start dev-container && ssh -Y dev-container "$@"' > ~/.local/bin/dev-container
 chmod +x ~/.local/bin/dev-container
+
+# Manually connect to the dev-container after installing the ssh extension
+code --install-extension ms-vscode-remote.remote-ssh
+
+echo 'sudo dnf upgrade -y; flatpak upgrade ; dev-container dnf upgrade -y ; dev-container /root/.cargo/bin/rustup update' > ~/.local/bin/laptop-update
+chmod +x ~/.local/bin/laptop-update
