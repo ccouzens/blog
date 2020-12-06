@@ -4,6 +4,7 @@ RUN dnf install -y \
 autoconf \
 automake \
 bash-completion \
+bind-utils \
 clang \
 clippy \
 cmake-filesystem \
