@@ -17,6 +17,7 @@ libgpg-error-devel \
 libxml2-devel \
 libxslt-devel \
 make \
+nmap-ncat \
 nodejs-yarn \
 npm \
 openssh-server \
