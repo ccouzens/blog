@@ -5,10 +5,6 @@ sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-rele
 sudo dnf install rpmfusion-nonfree-release-tainted
 # https://rpmfusion.org/keys
 
-# Enable wifi
-sudo dnf install b43-firmware broadcom-wl
-# Sign into Wifi
-
 sudo dnf install buildah firefox-wayland f*-backgrounds-gnome f*-backgrounds-extras-gnome gnome-tweaks podman vim fedora-workstation-repositories flatpak-spawn
 
 sudo dnf groupupdate core
@@ -39,24 +35,19 @@ cp /usr/share/vim/vim82/vimrc_example.vim ~/.vimrc
 
 ssh-keygen
 
-# make a dev container
-mkdir -p ~/Projects
-image_id="$(podman image build -f dev-box.dockerfile . | tee >(cat 1>&2) | tail -n1 | awk '{print $NF}')"
-podman container create --name dev-container -v ~/Projects:/root/projects:Z -v ~/.ssh/id_rsa.pub:/root/.ssh/authorized_keys:Z -p 127.0.0.1:3022:3022 "$image_id"
+# sign into github and clear up old keys
+# https://github.com/settings/keys
 
-cat > ~/.ssh/config << CONFIG
-Host dev-container
-  HostName localhost
-  User root
-  Port 3022
-CONFIG
-chmod 600 ~/.ssh/config
-
-echo 'podman container start dev-container && ssh -Y dev-container "$@"' > ~/.local/bin/dev-container
-chmod +x ~/.local/bin/dev-container
+# make a dev vm
+mkdir -p ~/Documents/git/github.com/ccouzens
+git -C ~/Documents/git/github.com/ccouzens clone git@github.com:ccouzens/dev-vm.git
+echo 'exec ~/Documents/git/github.com/ccouzens/dev-vm/dev-vm.bash "$@"' > ~/.local/bin/dev-vm
+chmod +x ~/.local/bin/dev-vm
+# Follow the instructions about editing ~/.ssh/config
+~/Documents/git/github.com/ccouzens/dev-vm/install-host.bash
 
 # Manually connect to the dev-container after installing the ssh extension
 code --install-extension ms-vscode-remote.remote-ssh
 
-echo 'sudo dnf upgrade -y; flatpak upgrade ; dev-container dnf upgrade -y ; dev-container /root/.cargo/bin/rustup update' > ~/.local/bin/laptop-update
+echo 'sudo dnf upgrade -y; flatpak upgrade ; dev-vm dnf upgrade -y ; dev-vm /home/vagrant/.cargo/bin/rustup update' > ~/.local/bin/laptop-update
 chmod +x ~/.local/bin/laptop-update
