@@ -23,3 +23,9 @@ container. I'm not doing that with the virtual machine as I've had bad
 experiences of shared VM file systems being slow. As such, I need an SSH key for
 use with `git` inside the VM. This unfortunately means my github access isn't
 isolated from my dev-environment.
+
+I can launch vs-code to a remote directory using a command like so:
+
+```bash
+code --folder-uri vscode-remote://ssh-remote+vagrant-dev-vm/home/vagrant/git/github.com/
+```
