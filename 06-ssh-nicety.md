@@ -50,5 +50,7 @@ two apps outside of the VM. This should be handled carefully.
    much value.
 5. On the other hand, if my laptop had other users, then a secret would protect
    me from them launching new terminals and VSCode instances.
-6. Variables such as paths and ssh server names should be properly escaped when
+6. Not be triggerable by a website running in my browser. A secret would help
+   here. So would not responding to regular HTTP GETs and POSTs.
+7. Variables such as paths and ssh server names should be properly escaped when
    launching `code` and `gnome-terminal`.
