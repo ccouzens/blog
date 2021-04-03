@@ -14,9 +14,9 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 flatpak install flathub com.valvesoftware.Steam org.gimp.GIMP org.gnome.PasswordSafe org.gnome.gitg com.visualstudio.code
 
 mkdir -p ~/.local/bin/
-echo 'flatpak run org.gimp.GIMP "$@"' > ~/.local/bin/gimp
-echo 'flatpak run org.gnome.gitg "$@"' > ~/.local/bin/gitg
-echo 'flatpak run com.visualstudio.code "$@"' > ~/.local/bin/code
+printf '#!/usr/bin/env bash\nflatpak run org.gimp.GIMP "$@"\n' > ~/.local/bin/gimp
+printf '#!/usr/bin/env bash\nflatpak run org.gnome.gitg "$@"\n' > ~/.local/bin/gitg
+printf '#!/usr/bin/env bash\nflatpak run com.visualstudio.code "$@"\n' > ~/.local/bin/code
 chmod +x ~/.local/bin/{gimp,gitg,code}
 
 # chrome
