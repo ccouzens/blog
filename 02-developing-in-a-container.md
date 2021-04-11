@@ -94,7 +94,7 @@ Finally, I add the Visual Studio Code ssh extension.
 
 Everything in the container runs as container `root`. This container `root` does
 not run with the root privileges of my laptop. It is a disposable environment
-and a large amount of tools in the container are corruptably by the default
+and a large amount of tools in the container are corruptable by the default
 user, so there isn't a good reason to run as a less privileged user.
 
 ## Review
