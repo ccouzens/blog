@@ -38,6 +38,8 @@ ssh-keygen
 # sign into github and clear up old keys
 # https://github.com/settings/keys
 
+gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
+
 # make a dev vm
 mkdir -p ~/Documents/git/github.com/ccouzens
 git -C ~/Documents/git/github.com/ccouzens clone git@github.com:ccouzens/dev-vm.git
