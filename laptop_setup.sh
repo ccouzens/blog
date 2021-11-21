@@ -51,5 +51,8 @@ chmod +x ~/.local/bin/dev-vm
 # Manually connect to the dev-container after installing the ssh extension
 code --install-extension ms-vscode-remote.remote-ssh
 
+# Unselect this setting in vscode
+# editor.selectionClipboard
+
 echo 'rpm-ostree upgrade; toolbox run sudo dnf upgrade -y; flatpak upgrade ; toolbox run \~/.cargo/bin/rustup update' > ~/.local/bin/laptop-update
 chmod +x ~/.local/bin/laptop-update
