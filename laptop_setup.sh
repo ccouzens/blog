@@ -42,6 +42,7 @@ gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize
 # disable middle click paste
 gsettings set org.gnome.desktop.interface gtk-enable-primary-paste "false"
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click "true"
+gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing false
 
 # make a dev vm
 mkdir -p ~/Documents/git/github.com/ccouzens
