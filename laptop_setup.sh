@@ -39,6 +39,8 @@ ssh-keygen
 # https://github.com/settings/keys
 
 gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
+# disable middle click paste
+gsettings set org.gnome.desktop.interface gtk-enable-primary-paste "false"
 
 # make a dev vm
 mkdir -p ~/Documents/git/github.com/ccouzens
