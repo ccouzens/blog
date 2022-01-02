@@ -5,7 +5,7 @@ sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-rele
 sudo dnf install rpmfusion-nonfree-release-tainted
 # https://rpmfusion.org/keys
 
-sudo dnf install buildah firefox-wayland f*-backgrounds-gnome f*-backgrounds-extras-gnome gnome-tweaks podman vim fedora-workstation-repositories flatpak-spawn
+sudo dnf install buildah firefox-wayland f*-backgrounds-gnome f*-backgrounds-extras-gnome gnome-tweaks podman vim fedora-workstation-repositories flatpak-spawn toolbox
 
 sudo dnf groupupdate core
 sudo dnf groupupdate multimedia
