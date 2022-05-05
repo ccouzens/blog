@@ -11,7 +11,10 @@ sudo dnf groupupdate core
 sudo dnf groupupdate multimedia
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
-flatpak install flathub com.valvesoftware.Steam org.gimp.GIMP org.gnome.PasswordSafe org.gnome.gitg com.visualstudio.code
+flatpak install flathub com.valvesoftware.Steam org.gimp.GIMP org.gnome.PasswordSafe org.gnome.gitg com.visualstudio.code org.chromium.Chromium com.microsoft.Edge
+
+flatpak --user override --filesystem=/run/udev:ro com.microsoft.Edge
+flatpak --user override --filesystem=/run/udev:ro org.chromium.Chromium
 
 mkdir -p ~/.local/bin/
 printf '#!/usr/bin/env bash\nflatpak run org.gimp.GIMP "$@"\n' > ~/.local/bin/gimp
