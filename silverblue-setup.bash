@@ -13,7 +13,7 @@ printf '#!/usr/bin/env bash\nflatpak run com.visualstudio.code "$@"\n' > ~/.loca
 chmod +x ~/.local/bin/{gimp,gitg,code}
 
 # enable the google chrome repo in software
-rpm-ostree install google-chrome-stable vim mozilla-openh264
+rpm-ostree install google-chrome-stable vim mozilla-openh264 virt-manager libvirt
 
 git config --global user.name "Chris Couzens"
 git config --global user.email "ccouzens@gmail.com"
