@@ -9,8 +9,11 @@ flatpak install fedora org.gimp.GIMP org.gnome.Epiphany org.gnome.gitg org.libre
 mkdir -p ~/.local/bin/
 printf '#!/usr/bin/env bash\nflatpak run org.gimp.GIMP "$@"\n' > ~/.local/bin/gimp
 printf '#!/usr/bin/env bash\nflatpak run org.gnome.gitg "$@"\n' > ~/.local/bin/gitg
-printf '#!/usr/bin/env bash\nflatpak run com.visualstudio.code "$@"\n' > ~/.local/bin/code
-chmod +x ~/.local/bin/{gimp,gitg,code}
+chmod +x ~/.local/bin/{gimp,gitg}
+
+mkdir -p ~/Documents/github.com/owtaylor/
+git -C ~/Documents/github.com/owtaylor/ clone https://github.com/owtaylor/toolbox-vscode.git
+ln -s ~/Documents/github.com/owtaylor/toolbox-vscode/code.sh ~/.local/bin/code
 
 # enable the google chrome repo in software
 rpm-ostree install google-chrome-stable vim mozilla-openh264 virt-manager libvirt
@@ -35,13 +38,19 @@ gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Alt>Tab']"
 gsettings set org.gnome.desktop.wm.keybindings switch-windows-backward "['<Shift><Alt>Tab']"
 gsettings set org.gnome.desktop.wm.keybindings switch-applications "[]"
 gsettings set org.gnome.desktop.wm.keybindings switch-applications-backward "[]"
-# add places menu bar ?
+# add places menu bar
+gsettings set org.gnome.shell disabled-extensions "['background-logo@fedorahosted.org', 'window-list@gnome-shell-extensions.gcampax.github.com']"
+gsettings set org.gnome.shell enabled-extensions "['apps-menu@gnome-shell-extensions.gcampax.github.com', 'places-menu@gnome-shell-extensions.gcampax.github.com']"
+# setup dark theme
+gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
+
 # set up autologin
 
 # Unselect this setting in vscode
 # editor.selectionClipboard
 
 toolbox create
+toolbox run bash -c 'curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh'
 
 echo 'rpm-ostree upgrade; toolbox run sudo dnf upgrade -y; flatpak upgrade ; toolbox run \~/.cargo/bin/rustup update' > ~/.local/bin/laptop-update
 chmod +x ~/.local/bin/laptop-update
