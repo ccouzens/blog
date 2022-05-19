@@ -1,6 +1,6 @@
 # install with disk encryption
 
-# flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak remote-modify flathub --enable
 
 flatpak install flathub com.valvesoftware.Steam org.gnome.PasswordSafe com.visualstudio.code
