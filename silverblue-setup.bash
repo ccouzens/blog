@@ -43,6 +43,8 @@ gsettings set org.gnome.shell disabled-extensions "['background-logo@fedorahoste
 gsettings set org.gnome.shell enabled-extensions "['apps-menu@gnome-shell-extensions.gcampax.github.com', 'places-menu@gnome-shell-extensions.gcampax.github.com']"
 # setup dark theme
 gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
+# Make 4k 27" monitor readable
+gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
 
 # set up autologin
 
