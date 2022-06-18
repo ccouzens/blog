@@ -44,7 +44,7 @@ gsettings set org.gnome.shell enabled-extensions "['apps-menu@gnome-shell-extens
 # setup dark theme
 gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 # Make 4k 27" monitor readable
-gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
+dconf write /org/gnome/mutter/experimental-features "['scale-monitor-framebuffer']"
 
 # set up autologin
 
