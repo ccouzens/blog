@@ -3,17 +3,13 @@
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak remote-modify flathub --enable
 
-flatpak install flathub com.valvesoftware.Steam org.gnome.PasswordSafe com.visualstudio.code
+flatpak install flathub com.valvesoftware.Steam org.gnome.PasswordSafe
 flatpak install fedora org.gimp.GIMP org.gnome.Epiphany org.gnome.gitg org.libreoffice.LibreOffice
 
 mkdir -p ~/.local/bin/
 printf '#!/usr/bin/env bash\nflatpak run org.gimp.GIMP "$@"\n' > ~/.local/bin/gimp
 printf '#!/usr/bin/env bash\nflatpak run org.gnome.gitg "$@"\n' > ~/.local/bin/gitg
 chmod +x ~/.local/bin/{gimp,gitg}
-
-mkdir -p ~/Documents/github.com/owtaylor/
-git -C ~/Documents/github.com/owtaylor/ clone https://github.com/owtaylor/toolbox-vscode.git
-ln -s ~/Documents/github.com/owtaylor/toolbox-vscode/code.sh ~/.local/bin/code
 
 # enable the google chrome repo in software
 rpm-ostree install google-chrome-stable vim mozilla-openh264 virt-manager libvirt
@@ -48,11 +44,18 @@ dconf write /org/gnome/mutter/experimental-features "['scale-monitor-framebuffer
 
 # set up autologin
 
-# Unselect this setting in vscode
-# editor.selectionClipboard
-
 toolbox create
 toolbox run bash -c 'curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh'
+toolbox run sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+toolbox run sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+toolbox run dnf check-update
+toolbox run sudo dnf install code
+
+printf '#!/usr/bin/env bash\ntoolbox run /usr/bin/code --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland "$@"\n' > ~/.local/bin/code
+chmod +x ~/.local/bin/code
+
+# Unselect this setting in vscode
+# editor.selectionClipboard
 
 echo 'rpm-ostree upgrade; toolbox run sudo dnf upgrade -y; flatpak upgrade ; toolbox run \~/.cargo/bin/rustup update' > ~/.local/bin/laptop-update
 chmod +x ~/.local/bin/laptop-update
