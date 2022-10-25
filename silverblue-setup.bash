@@ -17,7 +17,7 @@ rpm-ostree install google-chrome-stable vim mozilla-openh264 virt-manager libvir
 git config --global user.name "Chris Couzens"
 git config --global user.email "ccouzens@gmail.com"
 git config --global core.editor vim
-cp /usr/share/vim/vim82/vimrc_example.vim ~/.vimrc
+cp /usr/share/vim/vim*/vimrc_example.vim ~/.vimrc
 
 ssh-keygen
 
