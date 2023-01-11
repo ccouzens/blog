@@ -59,3 +59,25 @@ chmod +x ~/.local/bin/code
 
 echo 'rpm-ostree upgrade; toolbox run sudo dnf upgrade -y; flatpak upgrade ; toolbox run \~/.cargo/bin/rustup update' > ~/.local/bin/laptop-update
 chmod +x ~/.local/bin/laptop-update
+
+
+#####
+
+ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub
+sudo tee /etc/ssh/sshd_config.d/60-chris.conf <<< '
+PasswordAuthentication no
+PermitRootLogin no
+'
+sudo systemctl enable --now sshd
+
+sudo tee /etc/avahi/services/ssh.service <<< '<?xml version="1.0" standalone="no"?>
+<!DOCTYPE service-group SYSTEM "avahi-service.dtd">
+
+<service-group>
+  <name replace-wildcards="yes">%h</name>
+  <service>
+    <type>_ssh._tcp</type>
+    <port>22</port>
+  </service>
+</service-group>
+'
