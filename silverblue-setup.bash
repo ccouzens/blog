@@ -42,6 +42,11 @@ gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 # Make 4k 27" monitor readable
 dconf write /org/gnome/mutter/experimental-features "['scale-monitor-framebuffer']"
 
+# Firefox
+# about:config
+# middlemouse.paste set to false
+# clipboard.autocopy set to false
+
 # set up autologin
 
 toolbox create
