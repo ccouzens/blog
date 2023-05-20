@@ -55,6 +55,8 @@ toolbox run sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 toolbox run sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 toolbox run dnf check-update
 toolbox run sudo dnf install code
+toolbox run sudo dnf copr enable varlad/helix
+toolbox run sudo dnf install helix
 
 printf '#!/usr/bin/env bash\ntoolbox run /usr/bin/code --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland "$@"\n' > ~/.local/bin/code
 chmod +x ~/.local/bin/code
@@ -62,7 +64,24 @@ chmod +x ~/.local/bin/code
 # Unselect this setting in vscode
 # editor.selectionClipboard
 
-echo 'rpm-ostree upgrade; toolbox run sudo dnf upgrade -y; flatpak upgrade ; toolbox run \~/.cargo/bin/rustup update' > ~/.local/bin/laptop-update
+mkdir -p ~/.config/helix/
+cat > ~/.config/helix/config.toml <<< 'theme = "dark_high_contrast"
+
+[editor.soft-wrap]
+enable = true
+'
+
+cat > ~/.local/bin/hx <<< '#!/usr/bin/env bash
+hx=/usr/bin/hx
+if [[ -f "$hx" ]]; then
+  exec "$hx" "$@"
+else
+  toolbox run "$hx" "$@"
+fi
+'
+chmod +x ~/.local/bin/hx
+
+echo 'toolbox run sudo dnf upgrade -y; flatpak upgrade --assumeyes ; toolbox run \~/.cargo/bin/rustup update; rpm-ostree upgrade' > ~/.local/bin/laptop-update
 chmod +x ~/.local/bin/laptop-update
 
 
