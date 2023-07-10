@@ -46,6 +46,7 @@ dconf write /org/gnome/mutter/experimental-features "['scale-monitor-framebuffer
 # about:config
 # middlemouse.paste set to false
 # clipboard.autocopy set to false
+# browser.tabs.searchclipboardfor.middleclick to false
 
 # set up autologin
 
