@@ -26,8 +26,8 @@ ssh-keygen
 
 gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
 # disable middle click paste
-gsettings set org.gnome.desktop.interface gtk-enable-primary-paste "false"
-gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click "true"
+gsettings set org.gnome.desktop.interface gtk-enable-primary-paste false
+gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing false
 # alt tab behaviour
 gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Alt>Tab']"
@@ -35,8 +35,9 @@ gsettings set org.gnome.desktop.wm.keybindings switch-windows-backward "['<Shift
 gsettings set org.gnome.desktop.wm.keybindings switch-applications "[]"
 gsettings set org.gnome.desktop.wm.keybindings switch-applications-backward "[]"
 
-# Set up tap to click on login screen
-machinectl shell gdm@ /bin/bash <<< gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click "true"
+# Repeat important config for login screen
+machinectl shell gdm@ /bin/bash
+gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 
 
 # Firefox
