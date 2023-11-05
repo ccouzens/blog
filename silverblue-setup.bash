@@ -34,13 +34,10 @@ gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Alt>Tab']"
 gsettings set org.gnome.desktop.wm.keybindings switch-windows-backward "['<Shift><Alt>Tab']"
 gsettings set org.gnome.desktop.wm.keybindings switch-applications "[]"
 gsettings set org.gnome.desktop.wm.keybindings switch-applications-backward "[]"
-# add places menu bar
-gsettings set org.gnome.shell disabled-extensions "['background-logo@fedorahosted.org', 'window-list@gnome-shell-extensions.gcampax.github.com']"
-gsettings set org.gnome.shell enabled-extensions "['apps-menu@gnome-shell-extensions.gcampax.github.com', 'places-menu@gnome-shell-extensions.gcampax.github.com']"
-# setup dark theme
-gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
-# Make 4k 27" monitor readable
-dconf write /org/gnome/mutter/experimental-features "['scale-monitor-framebuffer']"
+
+# Set up tap to click on login screen
+machinectl shell gdm@ /bin/bash <<< gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click "true"
+
 
 # Firefox
 # about:config
