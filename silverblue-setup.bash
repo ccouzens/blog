@@ -57,6 +57,7 @@ toolbox run sudo dnf install code
 toolbox run sudo dnf copr enable varlad/helix
 toolbox run sudo dnf install helix wl-clipboard make clang gcc nodejs-npm
 toolbox run npm config set "prefix=$HOME/.local"
+toolbox run npm install -g typescript typescript-language-server
 
 printf '#!/usr/bin/env bash\ntoolbox run /usr/bin/code --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland "$@"\n' > ~/.local/bin/code
 chmod +x ~/.local/bin/code
