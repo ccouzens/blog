@@ -3,16 +3,14 @@
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak remote-modify flathub --enable
 
-flatpak install flathub com.valvesoftware.Steam org.gnome.World.Secrets
+flatpak install flathub com.valvesoftware.Steam org.gnome.World.Secrets com.github.flxzt.rnote org.chromium.Chromium
 flatpak install fedora org.gimp.GIMP org.gnome.Epiphany org.gnome.gitg org.libreoffice.LibreOffice
 
 mkdir -p ~/.local/bin/
-printf '#!/usr/bin/env bash\nflatpak run org.gimp.GIMP "$@"\n' > ~/.local/bin/gimp
 printf '#!/usr/bin/env bash\nflatpak run org.gnome.gitg "$@"\n' > ~/.local/bin/gitg
-chmod +x ~/.local/bin/{gimp,gitg}
+chmod +x ~/.local/bin/gitg
 
-# enable the google chrome repo in software
-rpm-ostree install google-chrome-stable vim mozilla-openh264 virt-manager libvirt
+rpm-ostree install vim mozilla-openh264 virt-manager libvirt
 
 git config --global user.name "Chris Couzens"
 git config --global user.email "ccouzens@gmail.com"
