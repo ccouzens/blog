@@ -23,6 +23,7 @@ ssh-keygen
 # https://github.com/settings/keys
 # setup ssh key fingerprints
 # https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints
+cat > ~/.ssh/known_hosts <<< ''
 
 gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
 # disable middle click paste
