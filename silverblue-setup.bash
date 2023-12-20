@@ -47,15 +47,15 @@ gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 # set up autologin
 
 toolbox create
-toolbox run bash -c 'curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh'
 toolbox run sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 toolbox run sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 toolbox run dnf check-update
 toolbox run sudo dnf install code
-toolbox run sudo dnf copr enable varlad/helix
-toolbox run sudo dnf install helix wl-clipboard make clang gcc nodejs-npm
+toolbox run sudo dnf install rustup helix wl-clipboard make clang gcc nodejs-npm pnpm clang-tools-extra rust-lldb
+toolbox run rustup-init -y
 toolbox run npm config set "prefix=$HOME/.local"
-toolbox run npm install -g typescript typescript-language-server
+toolbox run pnpm setup
+toolbox run pnpm install -g typescript typescript-language-server vscode-langservers-extracted dockerfile-language-server-nodejs
 
 printf '#!/usr/bin/env bash\ntoolbox run /usr/bin/code --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland "$@"\n' > ~/.local/bin/code
 chmod +x ~/.local/bin/code
