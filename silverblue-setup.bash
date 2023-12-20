@@ -14,7 +14,7 @@ rpm-ostree install vim mozilla-openh264 virt-manager libvirt
 
 git config --global user.name "Chris Couzens"
 git config --global user.email "ccouzens@gmail.com"
-git config --global core.editor vim
+git config --global core.editor hx
 cp /usr/share/vim/vim*/vimrc_example.vim ~/.vimrc
 
 ssh-keygen
