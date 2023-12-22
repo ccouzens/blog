@@ -86,6 +86,14 @@ chmod +x ~/.local/bin/hx
 echo 'toolbox run sudo dnf upgrade -y; flatpak upgrade --assumeyes ; toolbox run \~/.cargo/bin/rustup update; rpm-ostree upgrade' > ~/.local/bin/laptop-update
 chmod +x ~/.local/bin/laptop-update
 
+### Set up remote phone debugging
+# roughly following https://forums.fedoraforum.org/showthread.php?298965-HowTo-set-up-adb-(Android-Debug-Bridge)-on-Fedora-20
+
+# first device jelly star
+# second device s22
+sudo tee /etc/udev/rules.d/99-android-debug.rules <<< 'SUBSYSTEM=="usb", ATTR{idVendor}=="0e8d", ATTR{idProduct}=="201c", GROUP="chris", MODE="0664"
+SUBSYSTEM=="usb", ATTR{idVendor}=="04e8", ATTR{idProduct}=="6860", GROUP="chris", MODE="0664"'
+
 
 #####
 
