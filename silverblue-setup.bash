@@ -67,10 +67,11 @@ chmod +x ~/.local/bin/code
 # editor.selectionClipboard
 
 mkdir -p ~/.config/helix/
-cat > ~/.config/helix/config.toml <<< 'theme = "dark_high_contrast"
-
-[editor.soft-wrap]
+cat > ~/.config/helix/config.toml <<< '[editor.soft-wrap]
 enable = true
+
+[editor]
+auto-pairs = false 
 '
 
 cat > ~/.local/bin/hx <<< '#!/usr/bin/env bash
