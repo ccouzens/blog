@@ -94,7 +94,7 @@ chmod +x ~/.local/bin/laptop-update
 # second device s22
 sudo tee /etc/udev/rules.d/99-android-debug.rules <<< 'SUBSYSTEM=="usb", ATTR{idVendor}=="0e8d", ATTR{idProduct}=="201c", GROUP="chris", MODE="0664"
 SUBSYSTEM=="usb", ATTR{idVendor}=="04e8", ATTR{idProduct}=="6860", GROUP="chris", MODE="0664"'
-
+# adb reverse tcp:8080 tcp:8080
 
 #####
 
