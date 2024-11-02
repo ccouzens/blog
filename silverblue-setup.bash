@@ -80,6 +80,9 @@ enable = true
 
 [editor]
 auto-pairs = false 
+
+[editor.lsp]
+display-inlay-hints = true
 '
 
 cat > ~/.local/bin/hx <<< '#!/usr/bin/env bash
