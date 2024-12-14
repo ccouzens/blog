@@ -18,7 +18,9 @@ rpm-ostree override remove noopenh264 \
 --install libvirt \
 --install helix \
 --install wl-clipboard \
---install android-tools
+--install android-tools \
+--install steam \
+--install google-chrome
 
 git config --global user.name "Chris Couzens"
 git config --global user.email "ccouzens@gmail.com"
