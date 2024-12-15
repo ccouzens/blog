@@ -66,6 +66,7 @@ toolbox run dnf check-update
 toolbox run sudo dnf install code
 toolbox run sudo dnf install rustup helix wl-clipboard make clang gcc nodejs-npm pnpm clang-tools-extra rust-lldb wabt android-tools golang golang-x-tools-gopls golang-x-tools-goimports swift-lang swiftlint
 toolbox run rustup-init -y
+toolbox run rustup component add rust-analyzer
 toolbox run npm config set "prefix=$HOME/.local"
 toolbox run pnpm setup
 toolbox run pnpm install -g typescript typescript-language-server vscode-langservers-extracted dockerfile-language-server-nodejs svelte-language-server typescript-svelte-plugin
