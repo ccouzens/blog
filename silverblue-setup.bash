@@ -18,6 +18,7 @@ rpm-ostree override remove noopenh264 \
 --install wl-clipboard \
 --install android-tools \
 --install steam-devices \
+--install solaar-udev \
 --install google-chrome
 
 git config --global user.name "Chris Couzens"
