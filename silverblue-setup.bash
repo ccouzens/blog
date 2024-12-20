@@ -85,16 +85,6 @@ auto-pairs = false
 display-inlay-hints = true
 '
 
-cat > ~/.local/bin/hx <<< '#!/usr/bin/env bash
-hx=/usr/bin/hx
-if [[ -f "$hx" ]]; then
-  exec "$hx" "$@"
-else
-  toolbox run "$hx" "$@"
-fi
-'
-chmod +x ~/.local/bin/hx
-
 echo 'toolbox run sudo dnf upgrade -y; flatpak upgrade --assumeyes ; toolbox run \~/.cargo/bin/rustup update; rpm-ostree upgrade' > ~/.local/bin/laptop-update
 chmod +x ~/.local/bin/laptop-update
 
