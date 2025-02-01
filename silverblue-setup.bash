@@ -69,6 +69,7 @@ toolbox run rustup component add rust-analyzer
 toolbox run npm config set "prefix=$HOME/.local"
 toolbox run pnpm setup
 toolbox run pnpm install -g typescript typescript-language-server vscode-langservers-extracted dockerfile-language-server-nodejs svelte-language-server typescript-svelte-plugin
+toolbox run cargo install pest-language-server
 
 printf '#!/usr/bin/env bash\ntoolbox run /usr/bin/code --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland "$@"\n' > ~/.local/bin/code
 chmod +x ~/.local/bin/code
