@@ -30,6 +30,15 @@ infrastructure as code setup, in which I'd configure this.
 
 ## Steps
 
+The
+[Google GitHub Actions Readme](https://github.com/google-github-actions/auth/blob/v2.1.8/README.md)
+was helpful in figuring out the following steps. In particular within the
+`#setup` there is an initially hidden section that can be unveiled by clicking
+on the following text:
+
+> Click here to show detailed instructions for configuring GitHub authentication
+> to Google Cloud via a direct Workload Identity Federation.
+
 ### Secure credentials
 
 As recommended by the
@@ -80,5 +89,45 @@ Untick soft delete policy and keep object versioning and retention unticked.
 Leave data encryption as defaults (this data is public).
 
 Create the bucket.
+
+### Create a Workload Identity Pool
+
+[Documentation](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers)
+
+[Page](https://console.cloud.google.com/iam-admin/workload-identity-pools/create)
+
+#### Step 1
+
+Use the name `github` and the description `GitHub Actions Pool`.
+
+#### Step 2
+
+Select an `OpenID Connect (OIDC)` provider. Enter `My GitHub repo Provider` as
+the name, and then click edit. Change the provider id to be `my-repo`. Enter
+`https://token.actions.githubusercontent.com` in the issuer id. Skip uploading a
+JWK file. Leave the audience as default.
+
+#### Step 3
+
+Translate the following into the mapping
+
+```
+google.subject=assertion.sub,attribute.actor=assertion.actor,attribute.repository=assertion.repository,attribute.repository_owner=assertion.repository_owner
+```
+
+For attribute conditions, the following is fine but
+[we can do better](https://github.com/google-github-actions/auth/blob/v2.1.8/docs/SECURITY_CONSIDERATIONS.md#use-githubs-numeric-immutable-values):
+
+```
+assertion.repository_owner == 'ccouzens' && (assertion.repository == 'ccouzens/bookish-funicular' || assertion.repository == 'ccouzens/cross-language-prop-types')
+```
+
+Get information
+[about the repository through the API](https://api.github.com/repos/ccouzens/cross-language-prop-types).
+From this we can improve the assertions:
+
+```
+assertion.repository_owner == 'ccouzens' && assertion.repository_owner_id == '241046' && ((assertion.repository == 'ccouzens/bookish-funicular' && assertion.repository_id == '882804906') || (assertion.repository == 'ccouzens/cross-language-prop-types' && assertion.repository_id == '925692583'))
+```
 
 ### Push permissions from github
