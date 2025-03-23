@@ -30,6 +30,23 @@ infrastructure as code setup, in which I'd configure this.
 
 ## Steps
 
+### Secure credentials
+
+As recommended by the
+[google-github-actions/auth Readme](https://github.com/google-github-actions/auth/blob/v2.1.8/README.md#prerequisites):
+
+Add the following to any top level `.gitignore` or `.dockerignore` files:
+
+```
+# Ignore generated credentials from google-github-actions/auth
+gha-creds-*.json
+```
+
+There is also a
+[gcloudignore file](https://cloud.google.com/sdk/gcloud/reference/topic/gcloudignore),
+but it isn't documented as affecting the `gcloud storage` command so it might
+give an incorrect illusion of protection.
+
 ### Create Project
 
 [Documentation](https://developers.google.com/workspace/guides/create-project)
