@@ -67,6 +67,9 @@ doing this for. I have no parent oraganisation.
 
 ### Create Bucket
 
+This is the storage area we'll save our static assets to, and from which they'll
+be publically shared.
+
 [Documentation](https://cloud.google.com/storage/docs/creating-buckets)
 
 [Page](https://console.cloud.google.com/storage/create-bucket)
@@ -91,6 +94,8 @@ Leave data encryption as defaults (this data is public).
 Create the bucket.
 
 ### Create a Workload Identity Pool
+
+This is the service account that the GitHub Action will be authenticated as.
 
 [Documentation](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers)
 
