@@ -130,4 +130,32 @@ From this we can improve the assertions:
 assertion.repository_owner == 'ccouzens' && assertion.repository_owner_id == '241046' && ((assertion.repository == 'ccouzens/bookish-funicular' && assertion.repository_id == '882804906') || (assertion.repository == 'ccouzens/cross-language-prop-types' && assertion.repository_id == '925692583'))
 ```
 
+#### Step 4
+
+Run the following and take note of the output. So far as I can see this
+information is not available through the web.
+
+```bash
+gcloud iam workload-identity-pools providers describe "my-repo" \
+  --project="bookish-funicular" \
+  --location="global" \
+  --workload-identity-pool="github" \
+  --format="value(name)"
+```
+
+For me, the output is
+
+```
+projects/153575345186/locations/global/workloadIdentityPools/github/providers/my-repo
+```
+
+This will be used within the GitHub Action YAML like so
+
+```yaml
+- uses: "google-github-actions/auth@v2"
+  with:
+    project_id: "bookish-funicular"
+    workload_identity_provider: "projects/153575345186/locations/global/workloadIdentityPools/github/providers/my-repo"
+```
+
 ### Push permissions from github
