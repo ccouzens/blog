@@ -101,6 +101,9 @@ This is the service account that the GitHub Action will be authenticated as.
 
 [Page](https://console.cloud.google.com/iam-admin/workload-identity-pools/create)
 
+These steps may be easier to follow using the `gcloud` command line tool as
+[documented](https://github.com/google-github-actions/auth/blob/v2.1.8/README.md?plain=1#L362-L435).
+
 #### Step 1
 
 Use the name `github` and the description `GitHub Actions Pool`.
