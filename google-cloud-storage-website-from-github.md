@@ -166,4 +166,20 @@ This will be used within the GitHub Action YAML like so
     workload_identity_provider: "projects/153575345186/locations/global/workloadIdentityPools/github/providers/my-repo"
 ```
 
+### Create a Service Account
+
+[Page](https://console.cloud.google.com/iam-admin/serviceaccounts/create)
+
+Enter `github-workflow` as the name and ID. For the description I wrote
+`Assign storage bucket permissions from github actions`. For the role, I
+selected `Storage Admin`.
+
+### Link service account and workload identity pool
+
+[Page](https://console.cloud.google.com/iam-admin/workload-identity-pools/pool/github)
+
+Click "Grant Access" towards the top of the page. Then "Grant access using
+service account impersonation". Select "github-workflow" as the service account.
+Enter "repository_owner" and "ccouzens" for attribute name and value.
+
 ### Push permissions from github
