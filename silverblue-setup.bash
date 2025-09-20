@@ -3,8 +3,8 @@
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak remote-modify flathub --enable
 
-flatpak install flathub com.valvesoftware.Steam com.github.flxzt.rnote org.chromium.Chromium flathub com.belmoussaoui.Decoder io.github.pwr_solaar.solaar
-flatpak install fedora org.gimp.GIMP org.gnome.Epiphany org.gnome.gitg org.libreoffice.LibreOffice org.gnome.World.Secrets
+flatpak install flathub com.valvesoftware.Steam com.github.flxzt.rnote com.belmoussaoui.Decoder io.github.pwr_solaar.solaar
+flatpak install fedora org.gimp.GIMP org.gnome.Epiphany org.gnome.gitg org.libreoffice.LibreOffice org.gnome.World.Secrets org.chromium.Chromium
 
 mkdir -p ~/.local/bin/
 
