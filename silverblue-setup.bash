@@ -19,6 +19,7 @@ rpm-ostree override remove noopenh264 \
 --install helix \
 --install wl-clipboard \
 --install android-tools \
+--install meld \
 --install steam-devices \
 --install solaar-udev \
 --install google-chrome \
@@ -66,13 +67,12 @@ toolbox run sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 toolbox run sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 toolbox run dnf check-update
 toolbox run sudo dnf install code
-toolbox run sudo dnf install ripgrep gitg rustup helix wl-clipboard make clang gcc nodejs-npm pnpm clang-tools-extra rust-lldb wabt android-tools golang golang-x-tools-gopls golang-x-tools-goimports swift-lang swiftlint
+toolbox run sudo dnf install ripgrep gitg rustup helix wl-clipboard meld make clang gcc nodejs-npm pnpm clang-tools-extra rust-lldb wabt android-tools golang golang-x-tools-gopls golang-x-tools-goimports swift-lang swiftlint
 toolbox run rustup-init -y
 toolbox run rustup component add rust-analyzer
 toolbox run npm config set "prefix=$HOME/.local"
 toolbox run pnpm setup
 toolbox run pnpm install -g typescript typescript-language-server vscode-langservers-extracted dockerfile-language-server-nodejs svelte-language-server typescript-svelte-plugin
-toolbox run cargo install pest-language-server
 
 printf '#!/usr/bin/env bash\ntoolbox run /usr/bin/code --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland "$@"\n' > ~/.local/bin/code
 chmod +x ~/.local/bin/code
