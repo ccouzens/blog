@@ -77,6 +77,12 @@ toolbox run pnpm install -g typescript typescript-language-server vscode-langser
 printf '#!/usr/bin/env bash\ntoolbox run /usr/bin/code --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland "$@"\n' > ~/.local/bin/code
 chmod +x ~/.local/bin/code
 
+cat > ~/.config/Code/User/settings.json <<< '{
+    "editor.selectionClipboard": false,
+    "window.autoDetectColorScheme": true,
+    "terminal.integrated.suggest.enabled": false
+}'
+
 # Unselect this setting in vscode
 # editor.selectionClipboard
 # terminal.integrated.suggest.enabled
