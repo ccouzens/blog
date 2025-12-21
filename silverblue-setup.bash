@@ -79,6 +79,10 @@ chmod +x ~/.local/bin/code
 
 # Unselect this setting in vscode
 # editor.selectionClipboard
+# terminal.integrated.suggest.enabled
+
+# Select this setting in vscode
+# window.autoDetectColorScheme
 
 mkdir -p ~/.config/helix/
 cat > ~/.config/helix/config.toml <<< '[editor.soft-wrap]
