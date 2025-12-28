@@ -16,10 +16,13 @@ it.
 
 ## Why Not
 
-Why not [GitHub Pages](https://docs.github.com/en/pages)? I can have multiple
+Why not [GitHub Pages site](https://docs.github.com/en/pages)? I can have multiple
 repos acting semi independentily with the Google Cloud storage setup. With
 GitHub Pages I can only have one website repo across all my repos. Using Google
 Cloud storage for static assets is what I use professionally.
+
+Why not [GitHub pages Deployment](https://docs.github.com/en/rest/pages/pages?apiVersion=2022-11-28#create-a-github-pages-deployment)?
+Why not indeed?
 
 Why Not Infrastructure as Code like
 [Terraform](https://www.terraform.io/)/[OpenTofu](https://opentofu.org/)? I find
