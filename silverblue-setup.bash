@@ -15,29 +15,28 @@ sudo nano /etc/yum.repos.d/google-chrome.repo
 sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 
 rpm-ostree override remove noopenh264 \
---install openh264 \
---install mozilla-openh264 \
---install vim \
---install cmake \
---install mesa-libGLU-devel \
---install virt-manager \
---install libvirt \
---install helix \
---install wl-clipboard \
 --install android-tools \
---install meld \
---install steam-devices \
---install solaar-udev \
---install google-chrome-stable \
---install ripgrep \
---install code \
 --install bat \
---install pnpm \
---install nodejs-npm \
 --install clang \
---install rustup \
 --install clang-tools-extra \
---install rust-lldb
+--install cmake \
+--install code \
+--install google-chrome-stable \
+--install helix \
+--install libvirt \
+--install meld \
+--install mesa-libGLU-devel \
+--install mozilla-openh264 \
+--install nodejs-npm \
+--install openh264 \
+--install pnpm \
+--install ripgrep \
+--install rust-lldb \
+--install rustup \
+--install solaar-udev \
+--install steam-devices \
+--install vim \
+--install virt-manager
 
 git config --global user.name "Chris Couzens"
 git config --global user.email "ccouzens@gmail.com"
