@@ -8,6 +8,9 @@ flatpak install fedora org.gimp.GIMP org.gnome.Epiphany org.gnome.gitg org.libre
 
 mkdir -p ~/.local/bin/
 
+# enable chrome repo
+sudo nano /etc/yum.repos.d/google-chrome.repo
+
 rpm-ostree override remove noopenh264 \
 --install openh264 \
 --install mozilla-openh264 \
@@ -22,7 +25,7 @@ rpm-ostree override remove noopenh264 \
 --install meld \
 --install steam-devices \
 --install solaar-udev \
---install google-chrome \
+--install google-chrome-stable \
 --install ripgrep
 
 git config --global user.name "Chris Couzens"
