@@ -85,7 +85,7 @@ toolbox run rustup-init -y
 toolbox run rustup component add rust-analyzer
 toolbox run npm config set "prefix=$HOME/.local"
 toolbox run pnpm setup
-toolbox run pnpm install -g typescript typescript-language-server vscode-langservers-extracted dockerfile-language-server-nodejs svelte-language-server typescript-svelte-plugin
+toolbox run pnpm install -g typescript typescript-language-server vscode-langservers-extracted dockerfile-language-server-nodejs turbo svelte-language-server typescript-svelte-plugin
 
 printf '#!/usr/bin/env bash\nexec chromium-browser --enable-unsafe-webgpu --enable-features=Vulkan,VulkanFromANGLE,DefaultANGLEVulkan "$@"\n' > ~/.local/bin/chromium-webgpu
 chmod +x ~/.local/bin/chromium-webgpu
