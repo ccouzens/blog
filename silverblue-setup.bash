@@ -13,7 +13,7 @@ rpm-ostree override remove noopenh264 \
 --install mozilla-openh264 \
 --install vim \
 --install cmake \
---install mesa-libGLU-devel \ # For flutter
+--install mesa-libGLU-devel \
 --install virt-manager \
 --install libvirt \
 --install helix \
