@@ -11,6 +11,9 @@ mkdir -p ~/.local/bin/
 # enable chrome repo
 sudo nano /etc/yum.repos.d/google-chrome.repo
 
+# enable vscode repo
+sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+
 rpm-ostree override remove noopenh264 \
 --install openh264 \
 --install mozilla-openh264 \
@@ -26,7 +29,15 @@ rpm-ostree override remove noopenh264 \
 --install steam-devices \
 --install solaar-udev \
 --install google-chrome-stable \
---install ripgrep
+--install ripgrep \
+--install code \
+--install bat \
+--install pnpm \
+--install nodejs-npm \
+--install clang \
+--install rustup \
+--install clang-tools-extra \
+--install rust-lldb
 
 git config --global user.name "Chris Couzens"
 git config --global user.email "ccouzens@gmail.com"
