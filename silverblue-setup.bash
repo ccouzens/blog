@@ -117,7 +117,7 @@ auto-pairs = false
 display-inlay-hints = true
 '
 
-echo 'toolbox run sudo dnf upgrade -y; flatpak upgrade --assumeyes ; toolbox run \~/.cargo/bin/rustup update; rpm-ostree upgrade' > ~/.local/bin/laptop-update
+echo 'toolbox run sudo dnf upgrade -y; flatpak upgrade --assumeyes ; rustup update; pnpm upgrade -g; rpm-ostree upgrade' > ~/.local/bin/laptop-update
 chmod +x ~/.local/bin/laptop-update
 
 ### Set up remote phone debugging
