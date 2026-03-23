@@ -87,12 +87,6 @@ toolbox run npm config set "prefix=$HOME/.local"
 toolbox run pnpm setup
 toolbox run pnpm install -g typescript typescript-language-server vscode-langservers-extracted dockerfile-language-server-nodejs turbo svelte-language-server typescript-svelte-plugin
 
-printf '#!/usr/bin/env bash\nexec chromium-browser --enable-unsafe-webgpu --enable-features=Vulkan,VulkanFromANGLE,DefaultANGLEVulkan "$@"\n' > ~/.local/bin/chromium-webgpu
-chmod +x ~/.local/bin/chromium-webgpu
-
-printf '#!/usr/bin/env bash\ntoolbox run /usr/bin/code --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland "$@"\n' > ~/.local/bin/code
-chmod +x ~/.local/bin/code
-
 cat > ~/.config/Code/User/settings.json <<< '{
     "editor.selectionClipboard": false,
     "window.autoDetectColorScheme": true,
