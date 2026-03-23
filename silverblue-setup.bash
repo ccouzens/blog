@@ -21,12 +21,15 @@ rpm-ostree override remove noopenh264 \
 --install clang-tools-extra \
 --install cmake \
 --install code \
+--install egl-utils \
 --install google-chrome-stable \
+--install gtk3-devel \
 --install helix \
 --install libvirt \
 --install meld \
 --install mesa-libGLU-devel \
 --install mozilla-openh264 \
+--install ninja-build \
 --install nodejs-npm \
 --install openh264 \
 --install pnpm \
