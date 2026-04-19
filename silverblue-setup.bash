@@ -111,7 +111,10 @@ enable = true
 auto-pairs = false 
 
 [editor.lsp]
-display-inlay-hints = true
+display-inlay-hints = false
+
+[editor.file-picker]
+hidden = false
 '
 
 echo 'toolbox run sudo dnf upgrade -y; flatpak upgrade --assumeyes ; rustup update; pnpm upgrade -g; rpm-ostree upgrade' > ~/.local/bin/laptop-update
