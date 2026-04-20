@@ -44,6 +44,7 @@ rpm-ostree override remove noopenh264 \
 git config --global user.name "Chris Couzens"
 git config --global user.email "ccouzens@gmail.com"
 git config --global core.editor hx
+git config --global init.defaultBranch main
 cp /usr/share/vim/vim*/vimrc_example.vim ~/.vimrc
 
 ssh-keygen
