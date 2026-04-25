@@ -32,3 +32,5 @@ ripgrep \
 rust-lldb \
 rustup \
 vim
+
+sudo hostnamectl set-hostname --static raspberrypi4-iot
