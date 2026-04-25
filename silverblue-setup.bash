@@ -16,6 +16,7 @@ sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.m
 
 rpm-ostree override remove noopenh264 \
 --install android-tools \
+--install arm-image-installer \
 --install bat \
 --install clang \
 --install clang-tools-extra \
