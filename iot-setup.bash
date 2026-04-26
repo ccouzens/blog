@@ -15,6 +15,7 @@ sudo passwd chris
 sudo rpm-ostree install \
 avahi \
 bat \
+bluez \
 clang \
 clang-tools-extra \
 cmake \
