@@ -34,3 +34,26 @@ rustup \
 vim
 
 sudo hostnamectl set-hostname --static raspberrypi4-iot
+
+mkdir -p ~/.config/containers/systemd
+loginctl enable-linger
+
+cat > ~/.config/containers/systemd/home-assistant.container <<< '
+[Unit]
+Description=Home Assistant Container
+
+[Container]
+Image=ghcr.io/home-assistant/home-assistant:stable
+AutoUpdate=registry
+Environment=TZ=Europe/London
+Network=host
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target
+'
+
+systemctl --user daemon-reload
+systemctl --user start home-assistant.service
