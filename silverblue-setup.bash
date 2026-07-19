@@ -66,11 +66,13 @@ gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Alt>Tab']"
 gsettings set org.gnome.desktop.wm.keybindings switch-windows-backward "['<Shift><Alt>Tab']"
 gsettings set org.gnome.desktop.wm.keybindings switch-applications "[]"
 gsettings set org.gnome.desktop.wm.keybindings switch-applications-backward "[]"
+# disable ambient backlight
+gsettings set org.gnome.settings-daemon.plugins.power ambient-enabled false
 
 # Repeat important config for login screen
 machinectl shell gdm@ /bin/bash
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
-
+gsettings set org.gnome.settings-daemon.plugins.power ambient-enabled false
 
 # Firefox
 # about:config
