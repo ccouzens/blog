@@ -16,7 +16,7 @@ ripgrep \
 wl-clipboard \
 -y
 
-mkdir -p ~/.local/bin/ ~/.config/containers/ ~/.config/helix/
+mkdir -p ~/.local/bin/ ~/.config/containers/ ~/.config/helix/ ~/Documents/github.com/ccouzens/
 
 cat > ~/.local/bin/laptop-update <<< '#!/usr/bin/env bash
 
