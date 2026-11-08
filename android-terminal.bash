@@ -23,7 +23,7 @@ cat > ~/.local/bin/laptop-update <<< '#!/usr/bin/env bash
 set -e
 sudo apt-get update
 sudo apt-get dist-upgrade -y
-toolbox run dnf upgrade --assumeyes'
+toolbox run sudo dnf upgrade --assumeyes'
 
 chmod +x ~/.local/bin/laptop-update
 
