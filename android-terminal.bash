@@ -85,5 +85,5 @@ if [ -d ~/.bashrc.d ]; then
 fi
 unset rc
 
-eval "$(/home/droid/.local/bin/mise activate bash)" # added by https://mise.run/bash
+eval "$($HOME/.local/bin/mise activate bash)" # added by https://mise.run/bash
 '
